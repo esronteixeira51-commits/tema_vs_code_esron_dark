@@ -1,7 +1,7 @@
 # Ferramentas e configuração interna — não fazem parte do pacote publicado
 .vscode/**
 .github/**
-.gitignore
+
 
 # Documentação interna e arquivos de teste — não são necessários pra rodar o tema
 docs/**
