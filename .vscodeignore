@@ -1,0 +1,16 @@
+# Ferramentas e configuração interna — não fazem parte do pacote publicado
+.vscode/**
+.github/**
+.gitignore
+
+# Documentação interna e arquivos de teste — não são necessários pra rodar o tema
+docs/**
+preview/**
+reference/**
+
+# Build/tooling que não roda em runtime (o tema é só JSON declarativo)
+tsconfig.json
+**/*.map
+
+# Nunca inclua o próprio pacote gerado
+*.vsix
