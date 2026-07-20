@@ -3,9 +3,8 @@
 .github/**
 .gitignore
 
-# Documentação interna e arquivos de teste — não são necessários pra rodar o tema
+# Documentação interna — não é necessária pra rodar o tema
 docs/**
-preview/**
 reference/**
 
 # Build/tooling que não roda em runtime (o tema é só JSON declarativo)

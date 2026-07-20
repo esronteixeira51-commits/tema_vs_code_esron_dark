@@ -33,15 +33,15 @@ A tabela completa, com todos os valores hex e as categorias fora desse sistema, 
 - Uma fonte com itálico de verdade (Fira Code, JetBrains Mono, Cascadia Code, Victor Mono) — comentários e decorators dependem disso pra ficarem distinguíveis.
 - O language server certo pra cada linguagem, pra ter cobertura completa de semantic tokens (Pylance, rust-analyzer, C# Dev Kit, clangd, gopls...).
 
-Lista completa de extensões recomendadas e avisos conhecidos por linguagem: [`preview/README.md`](preview/README.md).
+Lista completa de extensões recomendadas e avisos conhecidos por linguagem: [`docs/language-support.md`](docs/language-support.md).
 
 ## Documentação
 
 - [`docs/palette.md`](docs/palette.md) — todos os valores hex
 - [`docs/design-philosophy.md`](docs/design-philosophy.md) — o porquê de cada decisão
 - [`docs/syntax-map.md`](docs/syntax-map.md) — resumo rápido de leitura
+- [`docs/language-support.md`](docs/language-support.md) — extensões recomendadas e avisos por linguagem
 - [`docs/roadmap.md`](docs/roadmap.md) — gaps conhecidos e próximos passos
-- [`preview/`](preview/) — arquivo de exemplo por linguagem, pra testar visualmente
 - [`reference/`](reference/) — material de apoio pra quem for contribuir
 
 ## Contribuindo

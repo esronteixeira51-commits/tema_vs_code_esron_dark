@@ -12,9 +12,7 @@
 
 ## Verificação pendente
 
-Os arquivos de `preview/` cobrem bem mais linguagens do que já testamos visualmente juntos (Dart, Kotlin, PHP, Ruby, Scala, Swift, Elixir, Lisp, OCaml, Pascal, CMake, Dockerfile, Makefile, Terraform, Fortran, Julia, R, SQL, Lua, PowerShell, ASM, Zig, JSX, TS, TSX). Já testamos visualmente: C++, Java, C#, Go, Rust, CSS, HTML, JavaScript, XML. Os demais ainda não tiveram uma checagem visual de verdade — vale abrir cada um e confirmar que a paleta se comporta bem antes de considerar "pronto".
-
-`preview/all-in-one.md` está incompleto (só tem esqueleto com `...` no lugar de código real) — ou preencher com trechos reais, ou remover, já que os arquivos individuais por linguagem já cobrem esse papel.
+A pasta `preview/` (arquivos de exemplo por linguagem) saiu do repositório publicado e ficou só de uso pessoal do autor, pra teste visual — não é mais rastreada aqui. Ela cobre bem mais linguagens do que já testamos visualmente juntos até agora (Dart, Kotlin, PHP, Ruby, Scala, Swift, Elixir, Lisp, OCaml, Pascal, CMake, Dockerfile, Makefile, Terraform, Fortran, Julia, R, SQL, Lua, PowerShell, ASM, Zig, JSX, TS, TSX). Já testamos visualmente: C++, Java, C#, Go, Rust, CSS, HTML, JavaScript, XML. Vale continuar essa checagem por conta própria antes de considerar o tema "pronto" pra todas essas linguagens — os avisos confirmados entram em `docs/language-support.md`.
 
 ## Ideias futuras
 

@@ -1,0 +1,43 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-theme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar jsonc-parser (mesmo parser que o VS Code usa)
+        run: npm install --no-save jsonc-parser
+
+      - name: Validar JSON do tema (aceita comentários)
+        run: |
+          node -e "
+            const fs = require('fs');
+            const { parse, printParseErrorCode } = require('jsonc-parser');
+            const path = 'themes/Esron Dark-color-theme.json';
+            const text = fs.readFileSync(path, 'utf8');
+            const errors = [];
+            const result = parse(text, errors, { allowTrailingComma: false });
+            if (errors.length > 0) {
+              errors.forEach(e => console.error(printParseErrorCode(e.error), 'offset', e.offset));
+              process.exit(1);
+            }
+            if (!result.colors || !result.semanticTokenColors || !result.tokenColors) {
+              console.error('Estrutura básica do tema ausente (colors / semanticTokenColors / tokenColors)');
+              process.exit(1);
+            }
+            console.log('Tema válido.');
+          "
+
+      - name: Empacotar extensão (dry run, sem publicar)
+        run: npx --yes @vscode/vsce package --no-dependencies -o /tmp/esron-dark.vsix
