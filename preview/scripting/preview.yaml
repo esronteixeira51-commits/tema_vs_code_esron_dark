@@ -1,0 +1,160 @@
+# comprehensive_example.yaml
+# Exemplo abrangente de YAML com diversos recursos
+
+---
+# ==================== METADADOS ====================
+apiVersion: v1
+kind: Configuration
+version: "2025.1"
+description: "Arquivo YAML completo para demonstração"
+created_at: 2025-07-18T21:45:00Z
+author: Grok
+
+# ==================== VARIÁVEIS E TIPOS ====================
+string_value: "Texto simples"
+multiline_string: |
+  Esta é uma string
+  multilinha preservando
+  quebras de linha.
+
+folded_string: >
+  Este texto é dobrado.
+  Ele será concatenado em uma única linha.
+
+number_int: 42
+number_float: 3.14159
+boolean_true: true
+boolean_false: false
+null_value: null
+
+# ==================== LISTAS ====================
+primitives:
+  - apple
+  - banana
+  - cherry
+
+numbers: [10, 20, 30, 40, 50]
+
+users:
+  - name: Alice
+    role: admin
+    active: true
+    permissions:
+      - read
+      - write
+      - delete
+  - name: Bob
+    role: editor
+    active: false
+    permissions: [read, write]
+
+# ==================== MAPAS ANINHADOS ====================
+database:
+  host: localhost
+  port: 5432
+  credentials:
+    username: admin
+    password: "super-secret-pass"
+    timeout: 30
+  options:
+    ssl: true
+    pool_size: 10
+    retry:
+      attempts: 3
+      delay: 500ms
+
+server:
+  host: 0.0.0.0
+  port: 8080
+  cors:
+    enabled: true
+    origins:
+      - https://example.com
+      - https://app.example.com
+  middlewares:
+    - name: logging
+      level: debug
+    - name: auth
+      type: jwt
+
+# ==================== ANCORAS E ALIASES (reuso) ====================
+defaults: &default_settings
+  timeout: 60
+  retries: 3
+  logging: true
+
+service_a:
+  <<: *default_settings
+  name: Service A
+  url: https://api.a.example.com
+
+service_b:
+  <<: *default_settings
+  name: Service B
+  url: https://api.b.example.com
+  retries: 5   # sobrescreve
+
+# ==================== MAPAS COM CHAVES COMPLEXAS ====================
+!!map {
+  ? !!str "key with spaces"
+  : value 1,
+  
+  ? !!str "key-with-dashes"
+  : value 2,
+  
+  ? 123
+  : numeric key,
+}
+
+# ==================== TAGS CUSTOMIZADAS ====================
+date: !!timestamp 2025-07-18T21:45:00Z
+binary_data: !!binary |
+  SGVsbG8gV29ybGQ=  # "Hello World" em base64
+
+# ==================== ESTRUTURA PARA KUBERNETES / DOCKER ====================
+kubernetes:
+  deployment:
+    replicas: 3
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 25%
+        maxSurge: 25%
+    resources:
+      requests:
+        cpu: "250m"
+        memory: "512Mi"
+      limits:
+        cpu: "500m"
+        memory: "1Gi"
+
+docker:
+  image: myapp:latest
+  build:
+    context: .
+    dockerfile: Dockerfile
+    args:
+      NODE_VERSION: 20
+      ENV: production
+  ports:
+    - "3000:3000"
+  volumes:
+    - ./data:/app/data
+  environment:
+    DEBUG: "false"
+    LOG_LEVEL: info
+
+# ==================== VALIDAÇÃO / METADADOS ====================
+validation:
+  required_fields: [name, email, version]
+  constraints:
+    age:
+      min: 18
+      max: 120
+    name:
+      max_length: 100
+  patterns:
+    email: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+
+# Comentário final
+note: "Este arquivo demonstra quase todos os recursos do YAML!"

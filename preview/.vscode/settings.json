@@ -1,0 +1,6 @@
+{
+    "fortran.fortls.disabled": true,
+    "files.watcherExclude": {
+        "**/target/**": true
+    }
+}

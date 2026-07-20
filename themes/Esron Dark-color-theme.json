@@ -1,0 +1,474 @@
+{
+    "$schema": "vscode://schemas/color-theme",
+    "name": "Esron Dark",
+    "type": "dark",
+
+    "colors": {
+
+        "editor.background": "#1D1F23",
+        "editor.foreground": "#D8DEE9",
+
+        "activityBar.background": "#191B1F",
+        "activityBar.foreground": "#D8DEE9",
+        "activityBar.inactiveForeground": "#6C7480",
+
+        "sideBar.background": "#191B1F",
+        "sideBar.foreground": "#D8DEE9",
+
+        "titleBar.activeBackground": "#1D1F23",
+        "titleBar.activeForeground": "#D8DEE9",
+        "titleBar.inactiveForeground": "#6C7480",
+
+        "statusBar.background": "#191B1F",
+        "statusBar.foreground": "#D8DEE9",
+
+        "editor.lineHighlightBackground": "#252931",
+
+        "editorCursor.foreground": "#FFFFFF",
+
+        "editor.selectionBackground": "#334155",
+
+        "editorIndentGuide.background1": "#30343D",
+        "editorIndentGuide.activeBackground1": "#5E81AC",
+
+        "panel.background": "#191B1F",
+        "panelTitle.activeForeground": "#D8DEE9",
+        "panelTitle.inactiveForeground": "#6C7480",
+
+        "terminal.background": "#1D1F23",
+        "terminal.foreground": "#D8DEE9",
+
+        /* ---------- Paleta ANSI do terminal (cores da logo ExFree) ---------- */
+        "terminal.ansiBlack": "#191B1F",
+        "terminal.ansiBrightBlack": "#6C7480",
+        "terminal.ansiRed": "#DC2626",
+        "terminal.ansiBrightRed": "#EA580C",
+        "terminal.ansiGreen": "#2E9E44",
+        "terminal.ansiBrightGreen": "#4ADE80",
+        "terminal.ansiYellow": "#F5A623",
+        "terminal.ansiBrightYellow": "#FFD866",
+        "terminal.ansiBlue": "#1D4ED8",
+        "terminal.ansiBrightBlue": "#2979FF",
+        "terminal.ansiMagenta": "#A855F7",
+        "terminal.ansiBrightMagenta": "#C084FC",
+        "terminal.ansiCyan": "#88C0D0",
+        "terminal.ansiBrightCyan": "#A5D8E0",
+        "terminal.ansiWhite": "#D8DEE9",
+        "terminal.ansiBrightWhite": "#FFFFFF",
+
+        /* ---------- Git decorations (explorer) ---------- */
+        "gitDecoration.addedResourceForeground": "#2E9E44",
+        "gitDecoration.modifiedResourceForeground": "#F5A623",
+        "gitDecoration.deletedResourceForeground": "#DC2626",
+        "gitDecoration.untrackedResourceForeground": "#2979FF",
+        "gitDecoration.conflictingResourceForeground": "#EA580C",
+
+        /* ---------- Acento de marca na UI ---------- */
+        "activityBar.activeBorder": "#1D4ED8"
+
+    },
+
+    "semanticHighlighting": true,
+
+    "semanticTokenColors": {
+
+    /* ===============================
+       VARIABLES
+       =============================== */
+
+        "variable": "#EF5350",
+        "variable.readonly": {
+            "foreground": "#EF5350",
+            "bold": true
+        },
+        "parameter": "#D8DEE9",
+        "property": "#D8DEE9",
+
+    /* ===============================
+       FUNCTIONS
+       =============================== */
+
+        "function": "#5A7FBF",
+        "method": "#5A7FBF",
+        "function.defaultLibrary": "#7AA2F7",
+        "method.defaultLibrary": "#7AA2F7",
+
+    /* ===============================
+       TYPES (definidos pelo usuário: class, interface, struct, enum)
+       =============================== */
+
+        "class": "#D16D6D",
+        "interface": "#D16D6D",
+        "struct": "#D16D6D",
+        "enum": "#D16D6D",
+
+        "type": "#D16D6D",
+        "typeParameter": "#D16D6D",
+
+        "enumMember": "#E2984B",
+
+    /* ===============================
+       TIPOS PRIMITIVOS (int, char, double, bool, u8, i32, etc.)
+       Cobertura via semantic tokens para linguagens cujo language
+       server emite esses tokens (ex.: rust-analyzer usa "builtinType";
+       clangd/tsserver às vezes usam "type" com modifier "defaultLibrary").
+       A cobertura "de verdade" pra C/C++/Java/C#/Go está no tokenColors
+       abaixo, via TextMate scopes, porque a maioria desses language
+       servers NÃO emite semantic token pra keyword de tipo primitivo.
+       =============================== */
+
+        "type.defaultLibrary": "#A855F7",
+        "builtinType": "#A855F7",
+
+    /* ===============================
+       NAMESPACE
+       =============================== */
+
+        "namespace": "#81A1C1",
+
+    /* ===============================
+       KEYWORDS
+       =============================== */
+
+        "keyword": {
+            "foreground": "#4C6FE0",
+            "bold": true
+        },
+
+    /* ===============================
+       STRINGS
+       =============================== */
+
+        "string": "#9ECE6A",
+
+    /* ===============================
+       NUMBERS
+       =============================== */
+
+        "number": "#FFCB6B",
+
+    /* ===============================
+       BOOLEAN / NULL
+       =============================== */
+
+        "boolean": "#E2984B",
+
+    /* ===============================
+       COMMENTS
+       =============================== */
+
+        "comment": {
+            "foreground": "#6C7480",
+            "italic": true
+        },
+
+    /* ===============================
+       OPERATORS
+       (antes usava a mesma cor do namespace; agora um tom neutro
+       próprio, pra operador não brigar visualmente com namespace)
+       =============================== */
+
+        "operator": "#7A8B99",
+
+    /* ===============================
+       REGEXP
+       =============================== */
+
+        "regexp": "#8FBCBB",
+
+    /* ===============================
+       DECORATORS
+       =============================== */
+
+        "decorator": {
+            "foreground": "#E2984B",
+            "italic": true
+        },
+
+    /* ===============================
+       LABELS
+       =============================== */
+
+        "label": "#E2984B",
+
+    /* ===============================
+       EVENTS
+       =============================== */
+
+        "event": "#E2984B",
+
+    /* ===============================
+       MACROS
+       =============================== */
+
+        "macro": "#E2984B",
+
+    /* ===============================
+       MODIFIERS
+       =============================== */
+
+        "*.declaration": {
+            "bold": true
+        },
+
+        "*.deprecated": {
+            "foreground": "#6C7480",
+            "strikethrough": true
+        },
+
+        "*.readonly": {
+            "foreground": "#EF5350",
+            "bold": true
+        },
+
+        "*.defaultLibrary": "#7AA2F7",
+
+        "*.static": "#7AA2F7",
+
+        "*.async": "#7AA2F7"
+    },
+
+
+    "tokenColors": [
+
+        {
+            "name": "Comments",
+            "scope": [
+                "comment",
+                "punctuation.definition.comment"
+            ],
+            "settings": {
+                "foreground": "#6C7480",
+                "fontStyle": "italic"
+            }
+        },
+
+        {
+            "name": "Strings",
+            "scope": [
+                "string"
+            ],
+            "settings": {
+                "foreground": "#9ECE6A"
+            }
+        },
+
+        {
+            "name": "Numbers",
+            "scope": [
+                "constant.numeric"
+            ],
+            "settings": {
+                "foreground": "#FFCB6B"
+            }
+        },
+
+        {
+            "name": "Functions",
+            "scope": [
+                "entity.name.function"
+            ],
+            "settings": {
+                "foreground": "#5A7FBF"
+            }
+        },
+
+        {
+            "name": "Builtin Functions",
+            "scope": [
+                "support.function",
+                "support.function.builtin"
+            ],
+            "settings": {
+                "foreground": "#7AA2F7"
+            }
+        },
+
+        {
+            "name": "Types (definidos pelo usuário)",
+            "scope": [
+                "entity.name.type",
+                "entity.name.class",
+                "support.type"
+            ],
+            "settings": {
+                "foreground": "#D16D6D"
+            }
+        },
+
+        {
+            "name": "Primitive Types (int, char, double, bool, void...)",
+            "scope": [
+                "storage.type.primitive",
+                "storage.type.built-in",
+                "storage.type.built-in.primitive",
+                "keyword.type",
+                "support.type.primitive",
+                "storage.type.numeric.go"
+            ],
+            "settings": {
+                "foreground": "#A855F7"
+            }
+        },
+
+        {
+            "name": "Storage / Type keyword genérico (fallback)",
+            "scope": [
+                "storage.type"
+            ],
+            "settings": {
+                "foreground": "#D16D6D"
+            }
+        },
+
+        {
+            "name": "Variables",
+            "scope": [
+                "variable",
+                "variable.other"
+            ],
+            "settings": {
+                "foreground": "#EF5350"
+            }
+        },
+
+        {
+            "name": "Keywords",
+            "scope": [
+                "keyword",
+                "keyword.control",
+                "keyword.operator",
+                "storage",
+                "storage.modifier"
+            ],
+            "settings": {
+                "foreground": "#4C6FE0",
+                "fontStyle": "bold"
+            }
+        },
+
+        {
+            "name": "Punctuation",
+            "scope": [
+                "punctuation",
+                "punctuation.section",
+                "punctuation.separator",
+                "punctuation.terminator",
+                "meta.brace"
+            ],
+            "settings": {
+                "foreground": "#7E8899"
+            }
+        },
+
+        {
+            "name": "HTML/JSX Tags",
+            "scope": [
+                "entity.name.tag"
+            ],
+            "settings": {
+                "foreground": "#5FA8D3"
+            }
+        },
+
+        {
+            "name": "HTML/JSX Attributes",
+            "scope": [
+                "entity.other.attribute-name"
+            ],
+            "settings": {
+                "foreground": "#B48EAD"
+            }
+        },
+
+        {
+            "name": "Markdown - Headings",
+            "scope": [
+                "markup.heading",
+                "markup.heading.markdown"
+            ],
+            "settings": {
+                "foreground": "#4C6FE0",
+                "fontStyle": "bold"
+            }
+        },
+
+        {
+            "name": "Markdown - Bold",
+            "scope": [
+                "markup.bold"
+            ],
+            "settings": {
+                "foreground": "#D8DEE9",
+                "fontStyle": "bold"
+            }
+        },
+
+        {
+            "name": "Markdown - Italic",
+            "scope": [
+                "markup.italic"
+            ],
+            "settings": {
+                "foreground": "#D8DEE9",
+                "fontStyle": "italic"
+            }
+        },
+
+        {
+            "name": "Markdown - Links",
+            "scope": [
+                "markup.underline.link",
+                "string.other.link"
+            ],
+            "settings": {
+                "foreground": "#7AA2F7"
+            }
+        },
+
+        {
+            "name": "Markdown - Inline Code",
+            "scope": [
+                "markup.inline.raw",
+                "markup.raw"
+            ],
+            "settings": {
+                "foreground": "#E2984B"
+            }
+        },
+
+        {
+            "name": "Constantes especiais (true/false/null/nil)",
+            "scope": [
+                "constant.language"
+            ],
+            "settings": {
+                "foreground": "#E2984B"
+            }
+        },
+
+        {
+            "name": "Decorators / Anotações (fallback)",
+            "scope": [
+                "meta.decorator",
+                "punctuation.decorator",
+                "storage.type.annotation"
+            ],
+            "settings": {
+                "foreground": "#E2984B",
+                "fontStyle": "italic"
+            }
+        },
+
+        {
+            "name": "Markdown - Quote",
+            "scope": [
+                "markup.quote"
+            ],
+            "settings": {
+                "foreground": "#6C7480",
+                "fontStyle": "italic"
+            }
+        }
+    ]
+}

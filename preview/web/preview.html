@@ -1,0 +1,96 @@
+<!-- ============================================================
+     ARQUIVO DE TESTE - PREVIEW DO TEMA "Esron Dark"
+     Cada bloco comentado indica a categoria testada
+     ============================================================ -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Semântico</title>
+
+    <!-- ---------- CSS embutido (deve alternar pro highlighting de CSS) ---------- -->
+    <style>
+        :root {
+            --cor-primaria: #5A7FBF;
+        }
+
+        body {
+            background-color: #1D1F23;
+            color: #D8DEE9;
+        }
+
+        .destaque {
+            color: var(--cor-primaria);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ---------- Tags (esperado: mesma cor de elemento CSS, #5FA8D3) ---------- -->
+    <header id="cabecalho" class="topo destaque">
+        <h1>Testando o tema Esron Dark</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ---------- Atributos (esperado: mesma cor de seletor CSS, #B48EAD) ---------- -->
+        <section data-secao="principal" aria-label="Conteúdo principal">
+            <img src="logo.png" alt="Logo da empresa" width="120" height="60">
+
+            <!-- ---------- Elemento auto-fechado + atributo booleano ---------- -->
+            <input type="text" name="usuario" placeholder="Digite seu nome" required disabled>
+
+            <!-- ---------- Botão com evento inline (JS embutido no atributo) ---------- -->
+            <button type="button" onclick="mostrarMensagem()">Clique aqui</button>
+
+            <!-- ---------- Formulário ---------- -->
+            <form action="/enviar" method="post">
+                <label for="email">E-mail:</label>
+                <input id="email" type="email" name="email">
+
+                <select name="opcao">
+                    <option value="1">Opção 1</option>
+                    <option value="2" selected>Opção 2</option>
+                </select>
+            </form>
+        </section>
+
+        <!--
+             Comentário
+             de múltiplas
+             linhas
+        -->
+    </main>
+
+    <!-- ---------- JavaScript embutido (deve alternar pro highlighting de JS) ---------- -->
+    <script>
+        // Variável (esperado: vermelho vivo, igual código normal)
+        let contador = 0;
+        const LIMITE_MAXIMO = 999;
+
+        // Função do usuário
+        function mostrarMensagem() {
+            const mensagem = `Contador atual: ${contador}`;
+            console.log(mensagem);
+            alert(mensagem);
+        }
+
+        // Booleano e número
+        let ativo = true;
+        let numero = 42;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("página carregada");
+        });
+    </script>
+
+</body>
+</html>
