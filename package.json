@@ -1,7 +1,7 @@
 {
     "name": "esron-dark",
     "displayName": "Esron Dark",
-    "description": "A clean dark theme inspired by COSMIC, built for long coding sessions.",
+    "description": "A clean dark theme inspired by Nord and Tokyo Night, built around a closed 8-color semantic system for consistent readability across languages.",
     "version": "0.1.0",
     "publisher": "esron",
     "engines": {

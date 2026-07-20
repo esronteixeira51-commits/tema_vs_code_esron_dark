@@ -1,37 +1,72 @@
-✓ keyword
+# Tokens cobertos — Esron Dark
 
-✓ keyword.control
+Lista dos semantic tokens e TextMate scopes que o tema realmente define hoje (`themes/Esron Dark-color-theme.json`). Se um token não está aqui, ele cai no `editor.foreground` padrão (`#D8DEE9`), sem cor própria.
 
-✓ keyword.operator
-
-✓ entity.name.function
-
-✓ entity.name.class
-
-✓ entity.name.type
+## Semantic tokens
 
 ✓ variable
-
-✓ variable.parameter
-
-✓ variable.constant
-
-✓ support.function
-
-✓ storage.type
-
-✓ storage.modifier
-
-✓ punctuation
-
-✓ punctuation.separator
-
-✓ punctuation.definition
-
-✓ invalid
-
+✓ variable.readonly
+✓ parameter
+✓ property
+✓ function
+✓ method
+✓ function.defaultLibrary
+✓ method.defaultLibrary
+✓ class
+✓ interface
+✓ struct
+✓ enum
+✓ type
+✓ typeParameter
+✓ enumMember
+✓ type.defaultLibrary
+✓ builtinType *(não-padrão, específico do rust-analyzer)*
+✓ namespace
+✓ keyword
+✓ string
+✓ number
+✓ boolean *(não-padrão, específico de alguns language servers)*
 ✓ comment
+✓ operator
+✓ regexp
+✓ decorator
+✓ label
+✓ event
+✓ macro
+✓ \*.declaration *(modifier)*
+✓ \*.deprecated *(modifier)*
+✓ \*.readonly *(modifier)*
+✓ \*.defaultLibrary *(modifier)*
+✓ \*.static *(modifier)*
+✓ \*.async *(modifier)*
 
-✓ comment.block
+## TextMate scopes (fallback)
 
-✓ comment.documentation
+✓ comment, punctuation.definition.comment
+✓ string
+✓ constant.numeric
+✓ constant.language
+✓ entity.name.function
+✓ support.function, support.function.builtin
+✓ entity.name.type, entity.name.class, support.type
+✓ storage.type.primitive, storage.type.built-in, storage.type.built-in.primitive, keyword.type, support.type.primitive, storage.type.numeric.go
+✓ storage.type *(fallback genérico — também pega `let`/`fn`/`struct` em algumas gramáticas)*
+✓ variable, variable.other
+✓ keyword, keyword.control, keyword.operator, storage, storage.modifier
+✓ punctuation, punctuation.section, punctuation.separator, punctuation.terminator, meta.brace
+✓ entity.name.tag
+✓ entity.other.attribute-name
+✓ markup.heading, markup.heading.markdown
+✓ markup.bold
+✓ markup.italic
+✓ markup.underline.link, string.other.link
+✓ markup.inline.raw, markup.raw
+✓ markup.quote
+✓ meta.decorator, punctuation.decorator, storage.type.annotation
+
+## Conhecidamente sem cobertura (gap aberto)
+
+- Atributos do C# (`[Obsolete]`) — a extensão padrão usa um scope que ainda não identificamos com certeza; hoje cai no foreground padrão. Ver `preview/README.md`, seção de avisos por linguagem.
+- Entidades XML (`&amp;`, `&lt;`) — sem regra dedicada ainda.
+
+> Este checklist reflete o arquivo de tema atual, não uma lista de metas futuras. Se adicionar um scope novo no tema, adicione a linha aqui também.
