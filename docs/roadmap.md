@@ -7,12 +7,15 @@
 
 ## Decisões em aberto
 
-- **`tsconfig.json` na raiz do projeto** — o tema é 100% declarativo (só JSON, sem código TypeScript de ativação). Não está claro se esse arquivo é necessário. Decidir entre removê-lo ou definir pra que serviria (ex.: um script de validação do tema em TS).
 - **Licença** — ainda não definida no `README.md`. MIT é o padrão mais comum pra temas do Marketplace, mas é uma decisão do autor.
+
+## Limitações confirmadas (não são bugs, sem correção possível)
+
+- **Python** — decorators (`@dataclass`, decorators customizados) saem na cor de função, não na de decorator — o Pylance não emite uma categoria semântica separada pra isso, já que um decorator em Python é, de fato, uma chamada de função. `@property`/`@staticmethod` saem na cor de tipo (salmão), porque são classes embutidas por baixo. Testado e confirmado — não há scope alternativo pra "consertar", é assim que o language server categoriza. Detalhes em `docs/language-support.md`.
 
 ## Verificação pendente
 
-A pasta `preview/` (arquivos de exemplo por linguagem) saiu do repositório publicado e ficou só de uso pessoal do autor, pra teste visual — não é mais rastreada aqui. Ela cobre bem mais linguagens do que já testamos visualmente juntos até agora (Dart, Kotlin, PHP, Ruby, Scala, Swift, Elixir, Lisp, OCaml, Pascal, CMake, Dockerfile, Makefile, Terraform, Fortran, Julia, R, SQL, Lua, PowerShell, ASM, Zig, JSX, TS, TSX). Já testamos visualmente: C++, Java, C#, Go, Rust, CSS, HTML, JavaScript, XML. Vale continuar essa checagem por conta própria antes de considerar o tema "pronto" pra todas essas linguagens — os avisos confirmados entram em `docs/language-support.md`.
+A pasta `preview/` (arquivos de exemplo por linguagem) saiu do repositório publicado e ficou só de uso pessoal do autor, pra teste visual — não é mais rastreada aqui. Já testamos visualmente, com resultado confirmado: C++, Java, C#, Go, Rust, CSS, HTML, JavaScript, XML, **Python**. Ainda faltam, entre as linguagens mais usadas: **TypeScript/TSX** e **PHP** — prioridade antes de considerar o tema pronto pra uso geral. O restante da lista (Dart, Kotlin, Ruby, Scala, Swift, Elixir, Lisp, OCaml, Pascal, CMake, Dockerfile, Makefile, Terraform, Fortran, Julia, R, SQL, Lua, PowerShell, ASM, Zig, JSX) é menos prioritário, mas vale checar aos poucos.
 
 ## Ideias futuras
 

@@ -54,7 +54,7 @@ Salmão
 
 Namespace / módulo
 ↓
-Azul acinzentado (frost blue)
+Lilás-acinzentado (afastado de propósito dos azuis, pra não confundir com o azul claro dos utilitários)
 
 Operador
 ↓

@@ -34,7 +34,7 @@
 |---|---|
 | Tipos definidos pelo usuário (`class`, `struct`, `enum`, `interface`) | `#D16D6D` |
 | Função do usuário (não-biblioteca) | `#5A7FBF` |
-| Namespace / módulo | `#81A1C1` |
+| Namespace / módulo | `#8A7FA8` |
 | Operadores | `#7A8B99` |
 | Pontuação | `#7E8899` |
 | Regexp | `#8FBCBB` |

@@ -48,3 +48,10 @@ Reestruturação completa a partir de uma especificação do usuário: exatament
 ## Fase 7 — Auditoria do repositório publicado
 
 Ao revisar o export do repositório, identificados arquivos de documentação que ficaram para trás em relação ao tema real: `docs/palette.md` (valor de Keywords desatualizado), `docs/syntax-map.md` (mapeamento inteiro incorreto — parecia rascunho de uma ideia anterior nunca implementada), `docs/tokens.md` (checklist não batia com os tokens reais), e a `description` do `package.json` (mencionava inspiração errada). Todos corrigidos pra bater com `themes/Esron Dark-color-theme.json`, que é a fonte da verdade.
+
+## Fase 8 — Verificação com o Inspect Editor Tokens and Scopes
+
+Duas suposições anteriores foram checadas com o inspector oficial do VS Code, em vez de só observação visual:
+
+- **Decorator em TypeScript**: confirmado que `@Componente(...)` recebe semantic token type `function` (igual Python com Pylance), sem nenhum modifier de itálico — o TypeScript também não emite uma categoria "decorator" separada, porque um decorator é sintaticamente uma referência a função. A hipótese anterior de que TS se comportaria diferente do Python estava errada; é a mesma limitação, mesma causa raiz. A regra de `decorator` laranja itálico do tema só é confirmada em linguagens com um modelo semântico de anotação genuinamente separado — ainda não verificamos isso com o inspector em nenhuma linguagem, só por observação visual (Java, Rust). Fica como verificação pendente.
+- **Namespace em TypeScript**: confirmado semantic token type `namespace`, modifier `declaration`, cor `#81A1C1` (o valor antigo) com negrito vindo do wildcard `*.declaration`. A cor estava correta tecnicamente, mas próxima demais do azul claro (`#7AA2F7`) dos utilitários a ponto de gerar confusão visual real, mesmo sabendo qual era qual. `namespace` migrou de `#81A1C1` pra `#8A7FA8` (lilás-acinzentado), saindo da família de azuis por completo.
