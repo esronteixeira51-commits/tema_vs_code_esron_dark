@@ -2,8 +2,13 @@
 
 ## Gaps conhecidos (prioridade alta)
 
-- **Atributos do C#** (`[Obsolete]`, `[Serializable]`...) não estão pegando a cor de decorator em todas as configurações. Suspeita: o scope real usado pelo C# Dev Kit/OmniSharp é diferente de `meta.decorator`/`punctuation.decorator`/`storage.type.annotation` (os que o tema cobre hoje). Precisa confirmar o scope exato com `Developer: Inspect Editor Tokens and Scopes` (ver `reference/token-inspector.md`) e adicionar a regra correspondente.
+- **Atributos do C#** (`[Obsolete]`, `[Serializable]`...) não estão pegando a cor de decorator em todas as configurações. Suspeita: o scope real usado pelo C# Dev Kit/OmniSharp é diferente de `meta.decorator`/`punctuation.decorator`/`storage.type.annotation`/`meta.attribute` (os que o tema cobre hoje). Precisa confirmar o scope exato com `Developer: Inspect Editor Tokens and Scopes` (ver `reference/token-inspector.md`) e adicionar a regra correspondente.
 - **Entidades XML** (`&amp;`, `&lt;`, `&gt;`) sem regra dedicada — hoje caem no foreground padrão.
+
+## Correção recente (pendente reverificação)
+
+- **Atributos do Rust** (`#[derive(...)]`) — inicialmente registrado como "confirmado funcionando" com base só em observação visual. Checagem com o inspector mostrou que estava **errado**: `rust-analyzer` não emite semantic token pra isso, e o scope TextMate real é `meta.attribute.rust`, que não batia com nenhuma regra do tema (`"No theme selector"` no inspector). Era um gap disfarçado de sucesso. Adicionado `meta.attribute` na regra de decorators — precisa confirmar visualmente ou com o inspector que `derive` agora pega o laranja itálico de verdade.
+- Ainda **não temos nenhum caso positivo confirmado por inspector** de que a regra de decorator funciona em alguma linguagem — só suposição visual em Java. Vale checar isso também antes de confiar na regra.
 
 ## Decisões em aberto
 

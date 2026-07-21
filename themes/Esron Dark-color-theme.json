@@ -452,7 +452,8 @@
             "scope": [
                 "meta.decorator",
                 "punctuation.decorator",
-                "storage.type.annotation"
+                "storage.type.annotation",
+                "meta.attribute"
             ],
             "settings": {
                 "foreground": "#E2984B",

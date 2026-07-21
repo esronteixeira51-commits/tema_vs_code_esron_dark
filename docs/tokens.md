@@ -62,11 +62,15 @@ Lista dos semantic tokens e TextMate scopes que o tema realmente define hoje (`t
 ✓ markup.underline.link, string.other.link
 ✓ markup.inline.raw, markup.raw
 ✓ markup.quote
-✓ meta.decorator, punctuation.decorator, storage.type.annotation
+✓ meta.decorator, punctuation.decorator, storage.type.annotation, meta.attribute
 
 ## Conhecidamente sem cobertura (gap aberto)
 
 - Atributos do C# (`[Obsolete]`) — a extensão padrão usa um scope que ainda não identificamos com certeza; hoje cai no foreground padrão. Ver `docs/language-support.md`, seção de avisos por linguagem.
 - Entidades XML (`&amp;`, `&lt;`) — sem regra dedicada ainda.
+
+## Corrigido recentemente
+
+- `meta.attribute` — faltava na regra de decorators; é o scope real do `#[derive(...)]` do Rust (confirmado com o inspector, scope anterior `meta.decorator` não cobria isso). Pendente reconfirmação visual.
 
 > Este checklist reflete o arquivo de tema atual, não uma lista de metas futuras. Se adicionar um scope novo no tema, adicione a linha aqui também.
