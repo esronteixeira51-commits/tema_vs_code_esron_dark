@@ -45,10 +45,10 @@ Lista dos semantic tokens e TextMate scopes que o tema realmente define hoje (`t
 ✓ comment, punctuation.definition.comment
 ✓ string
 ✓ constant.numeric
-✓ constant.language
+✓ constant.language, constant.other.class, constant.enum
 ✓ entity.name.function
 ✓ support.function, support.function.builtin
-✓ entity.name.type, entity.name.class, support.type
+✓ entity.name.type, entity.name.class, support.type, support.class
 ✓ storage.type.primitive, storage.type.built-in, storage.type.built-in.primitive, keyword.type, support.type.primitive, storage.type.numeric.go
 ✓ storage.type *(fallback genérico — também pega `let`/`fn`/`struct` em algumas gramáticas)*
 ✓ variable, variable.other
@@ -66,11 +66,17 @@ Lista dos semantic tokens e TextMate scopes que o tema realmente define hoje (`t
 
 ## Conhecidamente sem cobertura (gap aberto)
 
-- Atributos do C# (`[Obsolete]`) — a extensão padrão usa um scope que ainda não identificamos com certeza; hoje cai no foreground padrão. Ver `docs/language-support.md`, seção de avisos por linguagem.
 - Entidades XML (`&amp;`, `&lt;`) — sem regra dedicada ainda.
+
+## Limitação confirmada (não é falta de scope)
+
+- Atributos do C# (`[Obsolete]`) — identificado via inspector: bate com `entity.name.type.cs`, mesmo scope de qualquer referência de tipo comum. Sai salmão (`#D16D6D`), não branco como se pensava antes. Não corrigível sem afetar a coloração de tipos em geral. Ver `docs/roadmap.md`.
 
 ## Corrigido recentemente
 
-- `meta.attribute` — faltava na regra de decorators; é o scope real do `#[derive(...)]` do Rust (confirmado com o inspector, scope anterior `meta.decorator` não cobria isso). Pendente reconfirmação visual.
+- `meta.attribute` — faltava na regra de decorators; é o scope real do `#[derive(...)]` do Rust (confirmado com o inspector, scope anterior `meta.decorator` não cobria isso). **Confirmado visualmente que a correção funcionou.**
+- `support.class` — faltava na regra de "Types"; é o scope que o PHP usa pra qualquer referência de classe/enum (não só declaração). Achado testando `Cor` dentro de um `match` em PHP.
+- `constant.other.class` — faltava na regra de "Constantes especiais"; é o scope do PHP pra case de enum (`Cor::Vermelho`). Achado no mesmo teste.
+- `constant.enum` — faltava também; scope diferente do anterior, usado na **declaração** do case (`case Vermelho = 'vermelho';`), não na referência. PHP usa scopes diferentes pra declaração vs. uso do mesmo case de enum.
 
 > Este checklist reflete o arquivo de tema atual, não uma lista de metas futuras. Se adicionar um scope novo no tema, adicione a linha aqui também.

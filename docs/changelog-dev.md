@@ -63,3 +63,43 @@ O `#[derive(...)]` do Rust tinha sido marcado como "confirmado funcionando" com 
 Corrigido adicionando `meta.attribute` na regra de decorators. Fica registrado como lição: **observação visual rápida não é confirmação confiável** quando várias cores estão na tela ao mesmo tempo — o inspector é a única fonte confiável a partir de agora pra marcar algo como "confirmado".
 
 Continua em aberto: nenhuma linguagem tem, até agora, uma confirmação por inspector de que a regra de decorator realmente aciona uma categoria semântica própria (não caiu em "function" como Python/TypeScript). Java seria o próximo candidato a testar.
+
+## Fase 10 — Primeiro caso positivo confirmado
+
+`@Override` e `@Deprecated` em Java checados com o inspector: scope `storage.type.annotation.java`, sem semantic token nenhum, batendo com uma regra que o tema já tinha desde a primeira versão (`storage.type.annotation`). `#E2984B` itálico confirmado no próprio painel. Esse é o primeiro caso — de Python, TypeScript e Rust — onde a regra de decorator funciona por si só, sem precisar de correção.
+
+Diferença notável em relação a Python/TypeScript: lá, o decorator É uma chamada de função por baixo, então o semantic token (quando existe) sobrescreve qualquer scope TextMate com a cor de função. Em Java, a anotação não é uma chamada de função — é uma construção sintática própria (`storage.type.annotation`) — e como não há semantic token pra sobrescrever, o TextMate resolve sozinho e corretamente.
+
+Pendente: C# (`[Obsolete]`) ainda não foi checado com o inspector, só observação visual antiga ("ficou branco") — o mesmo tipo de checagem que já provou ser não confiável no caso do Rust.
+
+## Fase 11 — Segunda "confirmação visual" que era, na verdade, um engano
+
+`[Obsolete]` em C# tinha sido registrado como "fica branco/padrão, aceitável" com base em observação visual. O inspector mostrou os dois pontos errados: (1) não fica branco, fica **salmão** (`#D16D6D`), a cor de "Types"; (2) o scope real (`entity.name.type.cs`) é genérico demais pra ser diferenciado de uma referência de tipo comum sem quebrar a coloração de tipos em geral — então isso vira **limitação confirmada**, não gap corrigível.
+
+Segunda vez que uma "confirmação visual" antiga se prova errada quando checada com o inspector (a primeira foi o `#[derive]` do Rust, na Fase 9). Reforça a decisão da Fase 9: nada entra como "confirmado" na documentação sem passar pelo inspector primeiro.
+
+Com isso, o mapa de decorator/atributo está fechado nas linguagens principais: Java funciona de verdade (scope próprio); Python, TypeScript e C# não têm como funcionar, cada um por um motivo técnico diferente (decorator-é-função em Python/TS; scope-genérico-demais em C#).
+
+## Fase 12 — Dois gaps reais achados em PHP, maiores que os anteriores
+
+Testando `private`, `Cor` e `Vermelho` (dentro de um `match ($corEscolhida) { Cor::Vermelho => ... }`) com o inspector:
+
+- `private` → bate com `storage.modifier`, já coberto pela regra de Keywords. Sem surpresa.
+- `Cor` (referência ao enum, não a declaração) → scope `support.class.php`, **sem regra correspondente**. Diferente de `entity.name.class`/`entity.name.type` (usados pra declaração), `support.class` é o scope que o PHP usa amplamente pra qualquer *referência* a uma classe/enum — não só dentro de `match`, mas provavelmente em `new Pessoa()`, type hints, etc. Gap com impacto bem maior que os anteriores (Rust/C#/Python eram casos isolados de decorator; esse afeta referência de tipo em geral).
+- `Vermelho` (o case do enum) → scope `constant.other.class.php`, também sem regra. Equivalente TextMate do que seria `enumMember` via semantic token — o Intelephense aparentemente não emite semantic token pra isso, só TextMate.
+
+Ambos corrigidos: `support.class` adicionado à regra de "Types", `constant.other.class` adicionado à regra de "Constantes especiais". Diferente dos casos de decorator (Rust/Python/TS/C#), esses dois eram gaps de verdade — simplesmente faltava a linha, não uma limitação de linguagem.
+
+Pendente: o teste original pedido (`#[Obsoleto]`, o atributo customizado do PHP) ainda não foi verificado.
+
+## Fase 13 — Terceiro scope de enum do PHP
+
+Checando `Vermelho` na **declaração** do enum (`case Vermelho = 'vermelho';`, dentro de `enum Cor: string { ... }`), diferente do teste anterior que checou a *referência* (`Cor::Vermelho` dentro do `match`): scope `constant.enum.php`, também sem regra correspondente. PHP usa três scopes diferentes pra três contextos do mesmo enum: `support.class` (referência ao tipo), `constant.other.class` (referência ao case, tipo `Cor::Vermelho`) e `constant.enum` (declaração do case). Adicionado `constant.enum` à regra de "Constantes especiais".
+
+Com isso, PHP tem o histórico de mais correções reais de scope entre todas as linguagens testadas até agora — três gaps genuínos em uma única sessão de testes, todos de baixo risco (só adicionar scope à lista, sem mudar nenhuma cor existente).
+
+## Fase 14 — Bloco de linguagens principais fechado
+
+TSX testado (componente funcional com props tipadas, hooks genéricos, enum, renderização condicional, generic component). Todas as previsões de cor bateram: tags JSX na cor de tag, atributos JSX na cor de atributo, `interface`/generics em salmão, argumento de tipo primitivo dentro de `useState<number>` em roxo, enum member em laranja. Sem gap novo encontrado.
+
+Com isso, fecha o ciclo que começou perguntando "as linguagens principais precisam de refino antes de finalizar" — resposta era sim, e o processo revelou 2 gaps reais de decorator (Rust, corrigido) + 3 gaps reais de PHP (support.class, constant.other.class, constant.enum, todos corrigidos) + 3 limitações confirmadas sem correção possível (Python, TypeScript, C#, todas documentadas) + 1 correção de design não relacionada a gap (namespace afastado do azul claro). Nenhuma cor de sintaxe central (variável, tipo, string, número, keyword, comentário) precisou de ajuste em nenhuma linguagem testada.
