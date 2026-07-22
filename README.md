@@ -50,4 +50,4 @@ Pull requests são bem-vindos — principalmente relatando categorias que não e
 
 ## Licença
 
-[a definir]
+[MIT License]
